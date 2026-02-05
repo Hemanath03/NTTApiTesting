@@ -170,15 +170,15 @@ namespace NTTApiTesting.Services
             var passRate = totalTests > 0 ? (passedTests * 100.0 / totalTests) : 0;
             var avgResponseTime = results.Average(r => r.ResponseTimeMs);
 
-            Console.WriteLine($"\n  📊 Total Tests:        {totalTests}");
+            Console.WriteLine($"\n   Total Tests:        {totalTests}");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"  ✓ Passed:             {passedTests}");
+            Console.WriteLine($"   Passed:             {passedTests}");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"  ✗ Failed:             {failedTests}");
+            Console.WriteLine($"   Failed:             {failedTests}");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"  📈 Pass Rate:          {passRate:F1}%");
+            Console.WriteLine($"   Pass Rate:          {passRate:F1}%");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"  ⚡ Avg Response Time:  {avgResponseTime:F0}ms");
+            Console.WriteLine($"   Avg Response Time:  {avgResponseTime:F0}ms");
             Console.ResetColor();
 
             Console.WriteLine("\n" + new string('─', 100));
@@ -214,7 +214,7 @@ namespace NTTApiTesting.Services
                 if (!result.IsPassed && !string.IsNullOrEmpty(result.ValidationErrors))
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine($"         ↳ {result.ValidationErrors}");
+                    Console.WriteLine($"          {result.ValidationErrors}");
                     Console.ResetColor();
                 }
             }

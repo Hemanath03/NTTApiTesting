@@ -87,6 +87,36 @@ namespace NTTApiTesting.Services
                 testResult.ResponseTimeMs = stopwatch.ElapsedMilliseconds;
                 testResult.ResponseBody = await response.Content.ReadAsStringAsync();
 
+                //Log.Information("RESPONSE | {TestName} | {StatusCode} | {Body}",
+                //   testResult.TestName,
+                //   testResult.StatusCode,
+                //   testResult.ResponseBody);
+
+                //Log.Information("Response Body for {TestName}: {ResponseBody}",//for log reponse body
+                //    testResult.TestName,
+                //    testResult.ResponseBody);
+
+                try
+                {
+                    var json = System.Text.Json.JsonSerializer.Serialize(
+                        System.Text.Json.JsonDocument.Parse(testResult.ResponseBody),
+                        new System.Text.Json.JsonSerializerOptions { WriteIndented = true }
+                    );
+
+                    Log.Information("RESPONSE | {TestName} | {StatusCode}\n{Body}",
+                        testResult.TestName,
+                        testResult.StatusCode,
+                        json);
+                }
+                catch
+                {
+                    Log.Information("RESPONSE | {TestName} | {StatusCode}\n{Body}",
+                        testResult.TestName,
+                        testResult.StatusCode,
+                        testResult.ResponseBody);
+                }
+
+
                 // Extract token/variables from response if configured
                 if (testCase.ExtractToken != null && !string.IsNullOrEmpty(testCase.ExtractToken.JsonPath))
                 {
@@ -97,7 +127,7 @@ namespace NTTApiTesting.Services
                     );
                 }
 
-                // Validate response
+                //Validate response
                 var validationResult = _validator.ValidateResponse(testCase, testResult);
                 testResult.StatusCodeValid = testResult.StatusCode == testCase.ExpectedStatusCode;
                 testResult.ResponseBodyValid = validationResult.isValid;

@@ -12,42 +12,77 @@ namespace NTTApiTesting
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
                 .WriteTo.Console()
-                .WriteTo.File("Logs/test-log-.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.File("Logs/test-log-.txt", rollingInterval: RollingInterval.Minute)
+                .WriteTo.File(path: "Logs/response-log-.txt",
+                     rollingInterval: RollingInterval.Minute,
+                     restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Information)
                 .CreateLogger();
 
             try
             {
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("API Tester");
-                Console.ResetColor();
+                
                 Console.WriteLine();
 
-                // Initialize Variable Manager
+                
                 var variableManager = new VariableManager();
 
                
-                //Console.Write("📍 Enter your API endpoint (or press Enter for default): ");
-                //var endpointInput = Console.ReadLine();
-                //if (!string.IsNullOrWhiteSpace(endpointInput))
-                //{
-                //    variableManager.SetVariable("{{endpoint}}", endpointInput.Trim());
-                //}
-
+                
                 var configService = new TestConfigurationService();
                 var testCases = configService.GetTestCases();
+                var loginCases=configService.GetLoginTestCase();
+
+                var apiTestService = new ApiTestService(variableManager);
+
+                Console.WriteLine("\nSending OTP request...");
+                
+
+                foreach (var otpCase in loginCases)
+                {
+                    var otpResult = await apiTestService.ExecuteTestAsync(otpCase);
+
+
+                    if (!otpResult.IsPassed)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Failed to send OTP. Stopping execution.");
+                        Console.ResetColor();
+                        return;
+                    }
+                }
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nOTP sent successfully to registered mobile.");
+                Console.ResetColor();
+
+                Console.Write("Enter OTP: ");
+                string otp = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(otp))
+                {
+                    Console.WriteLine("OTP cannot be empty. Exiting.");
+                    return;
+                }
+
+                variableManager.SetVariable("{{otp}}", otp);
 
                 Console.WriteLine($"\n Loaded {testCases.Count} test cases from configuration\n");
 
                 Console.WriteLine("Available Tests:");
                 Console.WriteLine(new string('-', 70));
+
+
+
                 for (int i = 0; i < testCases.Count; i++)
                 {
-                    var hasExtraction = testCases[i].ExtractToken != null ? " 🔑" : "";
+                                       
+                    var hasExtraction = testCases[i].ExtractToken != null ? " " : "";
                     Console.WriteLine($"  {i + 1}. {testCases[i].Name} [{testCases[i].Method}]{hasExtraction}");
                 }
                 Console.WriteLine(new string('-', 70));
-                Console.WriteLine("   Extracts token/variable from response");
+                Console.WriteLine("Extracts token/variable from response");
 
                 Console.Write("\n How many tests to run? (Enter number or 'all'): ");
                 var input = Console.ReadLine();
@@ -60,7 +95,7 @@ namespace NTTApiTesting
                 Console.WriteLine($"\n Starting execution of {testsToRun.Count} tests...\n");
                 Console.WriteLine(new string('═', 100));
 
-                var apiTestService = new ApiTestService(variableManager);
+                //var apiTestService = new ApiTestService(variableManager);
                 var reportGenerator = new ReportGenerator();
                 var results = new List<TestResult>();
 
@@ -92,14 +127,14 @@ namespace NTTApiTesting
 
                 Console.WriteLine(new string('═', 100));
 
-                // Display extracted variables
+                
                 Console.Write("\n Show extracted variables? (y/n): ");
                 if (Console.ReadLine()?.ToLower() == "y")
                 {
                     variableManager.DisplayVariables();
                 }
 
-                // Generate reports
+                
                 Console.WriteLine(" Generating reports...");
 
                 var reportFolder = "Reports";
@@ -113,7 +148,7 @@ namespace NTTApiTesting
                 reportGenerator.GenerateCsvReport(results, csvReportPath);
                 reportGenerator.GenerateConsoleReport(results);
 
-                Console.ForegroundColor = ConsoleColor.Green;
+               
                 Console.WriteLine($" HTML Report saved: {Path.GetFullPath(htmlReportPath)}");
                 Console.WriteLine($" CSV Report saved:  {Path.GetFullPath(csvReportPath)}");
                 Console.ResetColor();

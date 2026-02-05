@@ -9,16 +9,16 @@ namespace NTTApiTesting.Services
 {
     public class TestConfigurationService
     {
-        public List<ApiTestCase> GetTestCases()
-        {
-            var testCases = new List<ApiTestCase>();
 
-            // STEP 1: Login API - Extract Token Automatically
-            testCases.Add(new ApiTestCase
+        public List<ApiTestCase> GetLoginTestCase()
+        {
+            var loginCases = new List<ApiTestCase>();
+
+            loginCases.Add(new ApiTestCase
             {
-                Name = "Login API - Extract Token",
+                Name = "Send OTP API",
                 Method = "POST",
-                Url = "{{endpoint}}/Login",
+                Url = "{{endpoint}}SendOTP",
                 Headers = new Dictionary<string, string>
                 {
                     { "AuthToken", "DEFAULT" },
@@ -27,11 +27,41 @@ namespace NTTApiTesting.Services
                     { "DeviceId", "MyAPI" }
                 },
                 Body = @"{
-                    ""uid"": ""84599711"",
-                    ""pwd"": ""84599711@123"",
-                    ""otp"": ""696247"",
+                    ""uid"": ""47054457"",
+                    ""pwd"": ""Uat@47054457"",
                     ""TwoFA"": 1
                 }",
+                ExpectedStatusCode = 200,
+
+            });
+
+            return loginCases;
+        }
+
+        public List<ApiTestCase> GetTestCases()
+        {
+            var testCases = new List<ApiTestCase>();
+
+
+
+            testCases.Add(new ApiTestCase
+            {
+                Name = "Login API - Extract Token",
+                Method = "POST",
+                Url = "{{endpoint}}Login",
+                Headers = new Dictionary<string, string>
+                {
+                    { "AuthToken", "DEFAULT" },
+                    { "Module", "DEFAULT" },
+                    { "Source", "RMS" },
+                    { "DeviceId", "MyAPI" }
+                },
+                Body = @"{
+                  ""uid"": ""47054457"",
+                 ""pwd"": ""Uat@47054457"",
+                  ""otp"": ""{{otp}}"",
+                   ""TwoFA"": 1
+                    }",
                 ExpectedStatusCode = 200,
                 ExpectedResponseContains = new List<string> { "susertoken" },
                 ExpectedJsonFields = new Dictionary<string, string>
@@ -39,7 +69,7 @@ namespace NTTApiTesting.Services
                     { "Status", "OK" },
                     { "ResponceDataObject.susertoken", "" }
                 },
-                // Extract token from response and store as {{token}}
+
                 ExtractToken = new TokenExtraction
                 {
                     JsonPath = "ResponceDataObject.susertoken",
@@ -47,119 +77,188 @@ namespace NTTApiTesting.Services
                 }
             });
 
-            // STEP 2: Use the extracted token in subsequent requests
             testCases.Add(new ApiTestCase
             {
                 Name = "Get Holdings - Use Token",
                 Method = "POST",
-                Url = "{{endpoint}}/Holdings",
+                Url = "{{endpoint}}Holdings",
                 Headers = new Dictionary<string, string>
                 {
-                    { "AuthToken", "{{token}}" },  // Will be replaced with actual token
+                    { "AuthToken", "{{token}}" },
                     { "Module", "OrderService" },
                     { "Source", "RMS" }
                 },
                 Body = @"{
-                    ""uid"": ""84599711"",
-                    ""actid"": ""84599711"",
+                    ""uid"": ""47054457"",
+                    ""actid"": ""47054457"",
                     ""ClientType"": """",
                     ""SearchText"": """"
                 }",
                 ExpectedStatusCode = 200
             });
 
-            // STEP 3: Another API using the same token
+
             testCases.Add(new ApiTestCase
             {
                 Name = "Get Position Book - Use Token",
                 Method = "POST",
-                Url = "{{endpoint}}/PositionBook",
+                Url = "{{endpoint}}PositionBook",
                 Headers = new Dictionary<string, string>
                 {
-                    { "AuthToken", "{{token}}" },  // Will be replaced with actual token
+                    { "AuthToken", "{{token}}" },
                     { "Module", "OrderService" },
                     { "Source", "RMS" }
                 },
                 Body = @"{
-                    ""uid"": ""84599711"",
-                    ""actid"": ""84599711"",
+                    ""uid"": ""47054457"",
+                    ""actid"": ""47054457"",
                     ""ClientType"": """"
                 }",
                 ExpectedStatusCode = 200
             });
 
-            // STEP 4: Order Book API
+
             testCases.Add(new ApiTestCase
             {
                 Name = "Get Order Book - Use Token",
                 Method = "POST",
-                Url = "{{endpoint}}/OrderBook",
+                Url = "{{endpoint}}OrderBook",
                 Headers = new Dictionary<string, string>
                 {
-                    { "AuthToken", "{{token}}" },  // Automatically uses extracted token
+                    { "AuthToken", "{{token}}" },
                     { "Module", "OrderService" },
                     { "Source", "RMS" }
                 },
                 Body = @"{
-                    ""actid"": ""84599711"",
-                    ""uid"": ""84599711"",
+                    ""actid"": ""47054457"",
+                    ""uid"": ""47054457"",
                     ""prd"": """",
                     ""status"": ""AMO""
                 }",
                 ExpectedStatusCode = 200
             });
 
-            // Example with public API (no token needed)
             testCases.Add(new ApiTestCase
             {
-                Name = "Public API - Get User",
-                Method = "GET",
-                Url = "https://jsonplaceholder.typicode.com/users/1",
-                ExpectedStatusCode = 200,
-                ExpectedResponseContains = new List<string> { "email" }
-            });
-
-            /* 
-            ===============================================
-            ADD YOUR API TEST CASES HERE
-            ===============================================
-            
-            // Template: Login and extract token
-            testCases.Add(new ApiTestCase
-            {
-                Name = "Your Login API",
+                Name = "Get Client Bank Info ",
                 Method = "POST",
-                Url = "{{endpoint}}/YourLoginEndpoint",
+                Url = "{{endpoint}}GetClientBankInfo",
                 Headers = new Dictionary<string, string>
                 {
-                    { "Content-Type", "application/json" }
+                    { "AuthToken", "{{token}}" },
+                    { "Module", "OrderService" },
+                    { "Source", "RMS" }
                 },
                 Body = @"{
-                    ""username"": ""your_username"",
-                    ""password"": ""your_password""
+                    ""actid"": ""47054457"",
+                    ""uid"": ""47054457"",
+                    ""prd"": """",
+                    ""status"": ""AMO""
                 }",
-                ExpectedStatusCode = 200,
-                ExtractToken = new TokenExtraction
-                {
-                    JsonPath = "data.token",  // Change to your JSON path
-                    VariableName = "{{token}}"
-                }
-            });
+                ExpectedStatusCode = 200
 
-            // Template: Use extracted token
+            });
             testCases.Add(new ApiTestCase
             {
-                Name = "API Using Token",
-                Method = "GET",
-                Url = "{{endpoint}}/protected-endpoint",
+                Name = "Add Market Watch Name",
+                Method = "POST",
+                Url = "{{endpoint}}AddMarketWatchName",
                 Headers = new Dictionary<string, string>
                 {
-                    { "Authorization", "Bearer {{token}}" },  // Token will be replaced
-                    { "Content-Type", "application/json" }
+                    { "AuthToken", "{{token}}" },
+                    { "Module", "OrderService" },
+                    { "Source", "RMS" }
                 },
+                Body = @"{
+                    ""MarketWatchId"": ""78314"",
+                    ""IsDeleted"": 0,
+                    ""MarketWatchName"":""Test""
+                }",
                 ExpectedStatusCode = 200
+
             });
-            */
+
+            testCases.Add(new ApiTestCase
+            {
+                Name = "Delete Market Watch Name",
+                Method = "POST",
+                Url = "{{endpoint}}AddMarketWatchName",
+                Headers = new Dictionary<string, string>
+                {
+                    { "AuthToken", "{{token}}" },
+                    { "Module", "OrderService" },
+                    { "Source", "RMS" }
+                },
+                Body = @"{
+                    ""MarketWatchId"": ""78314"",
+                    ""IsDeleted"": 1,
+                    ""MarketWatchName"":""Test""
+                }",
+                ExpectedStatusCode = 200
+
+            });
+
+            testCases.Add(new ApiTestCase
+            {
+                Name = "Place Order",
+                Method = "POST",
+                Url = "{{endpoint}}PlaceOrder",
+                Headers = new Dictionary<string, string>
+                {
+                    { "AuthToken", "{{token}}" },
+                    { "Module", "OrderService" },
+                    { "Source", "RMS" }
+                },
+                Body = @"{
+                    ""uid"": ""47054457"",
+                     ""actid"": ""47054457"",
+                     ""exch"": ""NSE"",
+                     ""trantype"": ""Buy"",
+                     ""norenordno"": ""0"",
+                     ""segment"": ""EQ"",
+                     ""tsym"": ""IOC-EQ"",
+                     ""qty"": 100,
+                      ""prc"": ""170.00"",
+                      ""trgprc"": ""0"",
+                     ""dscqty"": 0,
+                      ""prd"": ""CNC"",
+                      ""prctyp"": ""Limit"",
+                      ""mkt_protection"": ""0"",
+                      ""ret"": ""DAY"",
+                      ""remarks"": """",
+                      ""ordersource"": ""Web"",
+                       ""bpprc"": ""0"",
+                       ""blprc"": ""0"",
+                       ""trailprc"": ""0"",
+                       ""ext_remarks"": ""External remarks"",
+                      ""cl_ord_id"": """",
+                        ""tsym2"": """",
+                        ""trantype2"": """",
+                        ""qty2"": ""0"",
+                        ""prc2"": ""0"",
+                      ""tsym3"": ""0"",
+                      ""trantype3"": """",
+                        ""qty3"": ""0"",
+                      ""prc3"": ""0"",
+                      ""algo_id"": ""0"",
+                      ""naic_code"": ""0"",
+                      ""snonum"": ""0"",
+                     ""filshares"": ""0"",
+                      ""rorgqty"": ""0"",
+                        ""orgtrgprc"": ""0""
+                }",
+                ExpectedStatusCode = 200
+
+            });
+
+
+
+
+
+
+
+
+
 
             return testCases;
         }
