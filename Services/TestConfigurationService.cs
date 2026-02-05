@@ -15,11 +15,11 @@ namespace NTTApiTesting.Services
         {
             Console.WriteLine(AppContext.BaseDirectory);
 
-            var loginCases = new List<ApiTestCase>(); 
-            
-            var filePath = Path.Combine(
-             AppContext.BaseDirectory,
-             "NTTCoreCollection_developer.json");
+            var loginCases = new List<ApiTestCase>();
+
+            var filePath = @"C:\Users\Rober\source\repos\NTTApiTesting\Resources\NTTCoreCollection_developer.json";
+
+            Console.WriteLine("Loading Postman collection from: " + filePath);
 
             if (!File.Exists(filePath))
                 throw new FileNotFoundException($"File not found: {filePath}");

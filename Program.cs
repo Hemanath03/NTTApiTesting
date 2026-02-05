@@ -7,7 +7,7 @@ namespace NTTApiTesting
 
     class Program
     {
-       public  static async Task Main2(string[] args)
+       static async Task Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
