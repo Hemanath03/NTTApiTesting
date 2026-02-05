@@ -1,0 +1,2281 @@
+{
+  "info": {
+    "_postman_id": "73706442-7b7e-46c9-a99c-b86298410731",
+    "name": "NTTCoreCollection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43908328"
+  },
+  "item": [
+    {
+      "name": "OS",
+      "item": [
+        {
+          "name": "SendOTP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "QUANTIPLY",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "336d19f5-73a6-4a04-bd53-be4e33007cb3",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"uid\":\"90255961\",\r\n  \"pwd\":\"Navia@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}SendOTP",
+              "host": [
+                "{{endpoint}}SendOTP"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();\r",
+                  "if (\r",
+                  "    jsonData.ResponceDataObject &&\r",
+                  "    jsonData.ResponceDataObject.susertoken\r",
+                  ") {\r",
+                  "    pm.environment.set(\r",
+                  "        \"token\",\r",
+                  "        jsonData.ResponceDataObject.susertoken\r",
+                  "    );\r",
+                  "}\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              },
+              {
+                "key": "DeviceId",
+                "value": "MyAPI",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "bd5bf2d7-0666-4c6a-94ea-3251911802c4",
+                "type": "default",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\": \"90255961\",\r\n    \"pwd\": \"Navia@123\",\r\n    \"otp\": \"696247\",\r\n    \"TwoFA\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{liveendpoint}}Login",
+              "host": [
+                "{{liveendpoint}}Login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "AuthToken",
+                    "value": "DEFAULT",
+                    "type": "default"
+                  },
+                  {
+                    "key": "Module",
+                    "value": "DEFAULT",
+                    "type": "default"
+                  },
+                  {
+                    "key": "Source",
+                    "value": "RMS",
+                    "type": "default"
+                  },
+                  {
+                    "key": "DeviceId",
+                    "value": "MyAPI",
+                    "type": "default"
+                  },
+                  {
+                    "key": "APIKey",
+                    "value": "FBsJR9drNi80GC_r-o0Q3QAbzdM8bZMXuszjB3iPvHg",
+                    "type": "default",
+                    "disabled": true
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"uid\": \"ADMIN\",\r\n    \"pwd\": \"Navia@123\",\r\n    \"TwoFA\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{endpoint}}Login",
+                  "host": [
+                    "{{endpoint}}Login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 May 2025 08:36:28 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Access-Control-Allow-Headers",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Methods",
+                  "value": "*"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Encoding",
+                  "value": "gzip"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Vary",
+                  "value": "Accept-Encoding"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"Status\": \"OK\",\n    \"Message\": \"Authendication Success\",\n    \"StatusCode\": 0,\n    \"RequestID\": \"71c64ca4-b58a-422c-90ed-fe40ea381c81\",\n    \"Responce\": null,\n    \"ResponceDataObject\": {\n        \"susertoken\": \"ARtFTdh6uwBk2c744nLlzs5eLSqT3Q1uFo7y+MSvLjF/6HT6Leu630LisGQ4XB8FTadJOH2djW1WdFHVIrYmEOWoHXyA3ZqBHbH1bH1uS0A=\",\n        \"AuthorizedActivity\": null,\n        \"values\": {\n            \"26586\": \"watchlist1\",\n            \"26641\": \"manju\"\n        },\n        \"mws\": {\n            \"26586\": [\n                {\n                    \"MarketWatchId\": 26586,\n                    \"MarketWatchName\": \"watchlist1\",\n                    \"exch\": \"BSE\",\n                    \"token\": 100295,\n                    \"tsym\": \"VEDL#-A\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"A\",\n                    \"pp\": \"0\",\n                    \"ls\": \"1\",\n                    \"ti\": \"5\",\n                    \"SymbolInfos\": null\n                },\n                {\n                    \"MarketWatchId\": 26586,\n                    \"MarketWatchName\": \"watchlist1\",\n                    \"exch\": \"NSE\",\n                    \"token\": 20532,\n                    \"tsym\": \"AXISGOLD-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"-0.49\",\n                    \"ls\": \"1\",\n                    \"ti\": \"1\",\n                    \"SymbolInfos\": null\n                },\n                {\n                    \"MarketWatchId\": 26586,\n                    \"MarketWatchName\": \"watchlist1\",\n                    \"exch\": \"NSE\",\n                    \"token\": 3426,\n                    \"tsym\": \"TATAPOWER-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"-0.45\",\n                    \"ls\": \"1\",\n                    \"ti\": \"5\",\n                    \"SymbolInfos\": null\n                },\n                {\n                    \"MarketWatchId\": 26586,\n                    \"MarketWatchName\": \"watchlist1\",\n                    \"exch\": \"NSE\",\n                    \"token\": 5900,\n                    \"tsym\": \"AXISBANK-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"-0.13\",\n                    \"ls\": \"1\",\n                    \"ti\": \"10\",\n                    \"SymbolInfos\": null\n                },\n                {\n                    \"MarketWatchId\": 26586,\n                    \"MarketWatchName\": \"watchlist1\",\n                    \"exch\": \"NSE\",\n                    \"token\": 1594,\n                    \"tsym\": \"INFY-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"1.26\",\n                    \"ls\": \"1\",\n                    \"ti\": \"10\",\n                    \"SymbolInfos\": null\n                },\n                {\n                    \"MarketWatchId\": 26586,\n                    \"MarketWatchName\": \"watchlist1\",\n                    \"exch\": \"NSE\",\n                    \"token\": 18151,\n                    \"tsym\": \"TVSSCS-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"-0.26\",\n                    \"ls\": \"1\",\n                    \"ti\": \"1\",\n                    \"SymbolInfos\": null\n                }\n            ],\n            \"26641\": [\n                {\n                    \"MarketWatchId\": 26641,\n                    \"MarketWatchName\": \"manju\",\n                    \"exch\": \"NSE\",\n                    \"token\": 5900,\n                    \"tsym\": \"AXISBANK-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"-0.13\",\n                    \"ls\": \"1\",\n                    \"ti\": \"10\",\n                    \"SymbolInfos\": null\n                },\n                {\n                    \"MarketWatchId\": 26641,\n                    \"MarketWatchName\": \"manju\",\n                    \"exch\": \"NSE\",\n                    \"token\": 1333,\n                    \"tsym\": \"HDFCBANK-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"-0.88\",\n                    \"ls\": \"1\",\n                    \"ti\": \"10\",\n                    \"SymbolInfos\": null\n                },\n                {\n                    \"MarketWatchId\": 26641,\n                    \"MarketWatchName\": \"manju\",\n                    \"exch\": \"NSE\",\n                    \"token\": 16933,\n                    \"tsym\": \"INDBANK-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"-0.25\",\n                    \"ls\": \"1\",\n                    \"ti\": \"1\",\n                    \"SymbolInfos\": null\n                },\n                {\n                    \"MarketWatchId\": 26641,\n                    \"MarketWatchName\": \"manju\",\n                    \"exch\": \"NSE\",\n                    \"token\": 5258,\n                    \"tsym\": \"INDUSINDBK-EQ\",\n                    \"Segment\": \"1\",\n                    \"instname\": \"EQ\",\n                    \"pp\": \"1.64\",\n                    \"ls\": \"1\",\n                    \"ti\": \"5\",\n                    \"SymbolInfos\": null\n                }\n            ]\n        },\n        \"uname\": \"GUNASEKARAN\",\n        \"prarr\": [\n            \"MIS\",\n            \"CNC\",\n            \"MTF\"\n        ],\n        \"access_type\": [\n            \"INSTAOPTIONS\"\n        ],\n        \"uid\": \"ADMIN\",\n        \"orarr\": [\n            \"MKT\",\n            \"LIMIT\",\n            \"SL_M\",\n            \"SL_L\"\n        ],\n        \"email\": null,\n        \"TOTPEnabled\": 0,\n        \"IsTOTPSkip\": 0,\n        \"KraStatus\": [],\n        \"Clients\": [],\n        \"request_time\": \"14:06:28 26-05-2025\",\n        \"status\": \"Ok\",\n        \"TypeID\": null,\n        \"Info\": null,\n        \"ModelId\": null,\n        \"Message\": \"Authentication Success\",\n        \"Result\": 0,\n        \"CTA\": null,\n        \"Action\": null,\n        \"Data\": {\n            \"TimeTaken\": \"ReadStreamD 18 | BeforePro 1 | AfterPro 204 |  Total 225\"\n        }\n    },\n    \"Activity\": \"Login\",\n    \"TypeID\": null,\n    \"Info\": null\n}"
+            }
+          ]
+        },
+        {
+          "name": "CheckLogin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"IP_ADDRESS\": \"103.186.129.105\",\r\n    \"login_token\": \"hsR7Wi3jaBLpXDXj1V7SLQXLhHCxwFJ1/HKE5O8lYHBPYycvH2zitpPjYrMJdQOLBd42WcMHaMecpp7N+RaQrljUtEr+1QeeAjzkLxqQ908=\",\r\n    \"device\": \"Android\",\r\n    \"BOW_API_VERSION\": \"1.0.4\",\r\n    \"pna\": \"com.naviaall.app\",\r\n    \"App_Version\": \"1.0.26\",\r\n    \"app_type\": \"\",\r\n    \"UserId\": \"FRS0B386\",\r\n    \"usrID\": \"FRS0B386\",\r\n    \"end_type\": \"CheckLogin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}CheckLogin",
+              "host": [
+                "{{endpoint}}CheckLogin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{token}}Logout",
+              "host": [
+                "{{token}}Logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "FgtPwdOTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"uid\": \"99658122\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}FgtPwdOTP",
+              "host": [
+                "{{endpoint}}FgtPwdOTP"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ValOTPStPwd",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"actid\": \"99658122\",\r\n    \"UserId\": \"99658122\",\r\n    \"usrID\": \"99658122\",\r\n    \"uid\": \"99658122\",\r\n    \"login_token\": \"tDUfMF5Aw6wM7wejy90w+IdU9VxgqiEbGcwLUbkxY+eO5oMVDWjyvedcwi0hYw2OVxh1VzAvs2Vjc8+dUfeEOCN0L9dzqL8hkGg+3gX7EsM=\",\r\n    \"IP_ADDRESS\": \"2401:4900:2084:c481:1:1:fe4c:4fdc\",\r\n    \"device\": \"Android\",\r\n    \"BOW_API_VERSION\": \"1.0.4\",\r\n    \"pna\": \"com.naviaall.app\",\r\n    \"ucc\": \"99658122\",\r\n    \"oldpwd\": \"Nr@970546\",\r\n    \"pwd\": \"Atcd@970546\",\r\n    \"confirm_password\": \"Nr@970546\",\r\n    \"App_Version\": \"1.0.18\",\r\n    \"app_type\": \"\",\r\n    \"end_type\": \"ChangePWD\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}ValOTPStPwd",
+              "host": [
+                "{{endpoint}}ValOTPStPwd"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetClientBankInfo",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              },
+              {
+                "key": "DeviceId",
+                "value": "MyAPI",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\": \"99658122\",\r\n    \"actid\": \"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetClientBankInfo",
+              "host": [
+                "{{endpoint}}GetClientBankInfo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AddMarketWatchName",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"MarketWatchId\": \"0\",\r\n    \"IsDeleted\": 0,\r\n    \"MarketWatchName\":\"\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}AddMarketWatchName",
+              "host": [
+                "{{endpoint}}AddMarketWatchName"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AddMarketWatchSymbols",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"wlid\": 33430,\r\n    \"scrips\": \"IND|IND_HANGSENG_BEES-NAV\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:7161/?Activity=AddMarketWatchSymbols",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "7161",
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "Activity",
+                  "value": "AddMarketWatchSymbols"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PlaceOrder",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "9c3d67d1-87af-4373-a576-173d2e0ae6da",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"deviceid\":\"RP1A.200720.011\",\"device_type\":\"1\",\"IP_ADDRESS\":\"157.38.129.155\",\"device\":\"Android\",\"BOW_API_VERSION\":\"1.0.4\",\"pna\":\"com.naviaall.app\",\"App_Version\":\"1.2.0\",\"app_type\":\"\",\"ucc\":\"90255961\",\"volume\":\"1\",\"price\":\"3421.90\",\"tprice\":\"0.00\",\"dqty\":\"0\",\"ioc\":\"0\",\"login_token\":\"ZNs7FUJgTaa6dNQ3cdfT099mCSiqtthQ8e+c7UG9Y79pZLD8V5csRjnWDbFg+7TSgYv7CmdTV65lMiUHyri8G7xiEOf4RuRlG+Ylk65oGnE=\",\"user_id\":\"90255961\",\"user_name\":\"90255961\",\"current_price\":\"3405.00\",\"blockdeal\":\"N\",\"pro_client\":\"1\",\"buy_sell\":\"0\",\"series\":\"EQ\",\"token\":\"12092\",\"nse_token\":\"12092\",\"bse_token\":\"0\",\"symbol\":\"KAYNES-EQ\",\"oe_destination\":\"2\",\"source\":\"NSE\",\"market\":\"Equity\",\"order_type\":\"LIMIT\",\"amo_order\":\"false\",\"oe_market_id\":\"1\",\"oe_good_till_date\":\"0\",\"oe_good_till_cancel\":\"\",\"oe_segment\":\"1\",\"oe_book_type\":\"1\",\"oe_group\":\"NA\",\"OEFIELD3\":\"Y\",\"OEField1\":\"1\",\"OESettlor\":\"NA\",\"oe_status\":\"2\",\"OEInstrumentType\":\"\",\"OEExpiryDate\":\"0\",\"OEOptionType\":\"\",\"OEStrikePrice\":\"0\",\"OEAdminUSID\":\"90255961\",\"err_msg\":\" \",\"underlyingVal\":\"\",\"actid\":\"90255961\",\"UserId\":\"90255961\",\"usrID\":\"90255961\",\"end_type\":\"PlaceOrder\",\"uid\":\"90255961\",\"exch\":\"NSE\",\"trantype\":\"Sell\",\"norenordno\":\"0\",\"segment\":\"Equity\",\"tsym\":\"KAYNES-EQ\",\"qty\":\"1\",\"prc\":\"3421.90\",\"trgprc\":\"0.00\",\"dscqty\":\"0\",\"prd\":\"CNC\",\"prctyp\":\"LMT\",\"mkt_protection\":\"\",\"ret\":\"DAY\",\"remarks\":\"New Order\",\"ordersource\":\"Android\",\"bpprc\":\"0\",\"blprc\":\"0\",\"trailprc\":\"0\",\"ext_remarks\":\"External remarks\",\"amo\":\"No\",\"tsym2\":\"\",\"trantype2\":\"\",\"qty2\":\"0\",\"prc2\":\"0\",\"tsym3\":\"0\",\"trantype3\":\"\",\"qty3\":\"0\",\"prc3\":\"0\",\"algo_id\":\"0\",\"naic_code\":\"0\",\"snonum\":\"0\",\"filshares\":\"0\",\"rorgqty\":\"0\",\"orgtrgprc\":\"0\",\"cl_ord_id\":\"123\",\"IsSquareOff\":false}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{liveendpoint}}PlaceOrder",
+              "host": [
+                "{{liveendpoint}}PlaceOrder"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BasketOrder",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"AllOrders\": [\r\n        {\r\n            \"uid\": \"89191333\",\r\n            \"actid\": \"89191333\",\r\n            \"exch\": \"MCX\",\r\n            \"trantype\": \"Sell\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"CUR\",\r\n            \"tsym\": \"CRUDEOIL14JAN20266550CE\",\r\n            \"qty\": 1,\r\n            \"prc\": \"0.00\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 0,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"MKT\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"DAY\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"Web\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\"\r\n        },\r\n        {\r\n            \"uid\": \"89191333\",\r\n            \"actid\": \"89191333\",\r\n            \"exch\": \"MCX\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"CUR\",\r\n            \"tsym\": \"CRUDEOIL14JAN20266600CE\",\r\n            \"qty\": 1,\r\n            \"prc\": \"0.00\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 0,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"MKT\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"DAY\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"Web\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}BasketOrder",
+              "host": [
+                "{{endpoint}}BasketOrder"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ModifyOrder",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"exch\": \"NSE\",\r\n    \"ordno\": \"290002133\",\r\n    \"prctyp\": \"LMT\",\r\n    \"prc\": \"1227.30\",\r\n    \"qty\": 2,\r\n    \"tqty\":8,\r\n    \"tsym\": \"KAYNES-EQ\",\r\n    \"ret\": \"\",\r\n    \"mkt_protection\": \"0\",\r\n    \"trgprc\": \"0\",\r\n    \"dscqty\": 0,\r\n    \"ext_remarks\": \"\",\r\n    \"cl_ord_id\": \"290002133\",\r\n    \"uid\": \"94611103\",\r\n    \"actid\": \"94611103\",\r\n    \"bpprc\": \"0\",\r\n    \"blprc\": \"0\",\r\n    \"trailprc\": \"0\",\r\n    \"ordersource\": \"Web\",\r\n    \"orderactivity\": 2,\r\n    \"prd\": \"CNC\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}ModifyOrder",
+              "host": [
+                "{{endpoint}}ModifyOrder"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CancelOrder",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"actid\": \"90255961\",\r\n  \"uid\": \"90255961\",\r\n  \"ordno\": \"210002243\",\r\n  \"cl_ord_id\": \"210002243\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:7161/?Activity=CancelOrder",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "7161",
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "Activity",
+                  "value": "CancelOrder"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OrderBook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"deviceid\":\"BP2A.250605.015\",\"device_type\":\"1\",\"IP_ADDRESS\":\"210.18.140.5\",\"device\":\"Android\",\"BOW_API_VERSION\":\"1.0.4\",\"pna\":\"com.naviaall.app\",\"usrID\":\"90255961\",\"login_token\":\"4rg78dImva/mfVAonzAFLzpxa0UQE/srGgKlhGtEigXhhvSuGmJa86pXDzl2xhx8EMk2GvlyLl9D1we9LDukHNLWFnzSxS5WNKU1yywpse4=\",\"actid\":\"90255961\",\"uid\":\"90255961\",\"UserId\":\"99658122\",\"App_Version\":\"1.5.0\",\"app_type\":\"\",\"ucc\":\"99658122\",\"end_type\":\"OrderBook\",\"prd\":\"\",\"status\":\"AMO\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{liveendpoint}}OrderBook",
+              "host": [
+                "{{liveendpoint}}OrderBook"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PositionBook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "08c617b4-b875-4984-b555-f80a82dd8e7a",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\":\"ADMIN\",\r\n    \"actid\":\"42660460\",\r\n    \"ClientType\":\"\"\r\n   \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}PositionBook",
+              "host": [
+                "{{endpoint}}PositionBook"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Holdings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "adfdsfsdfdf",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\":\"94611103\",\r\n    \"actid\":\"94611103\",\r\n    \"ClientType\":\"\",\r\n    \"SearchText\":\"\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}Holdings",
+              "host": [
+                "{{endpoint}}Holdings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUsedMargin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\": \"84359763\",\r\n    \"actid\":  \"84359763\" //\"84473545\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetUsedMargin",
+              "host": [
+                "{{endpoint}}GetUsedMargin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Limits",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\": \"90255961\",\r\n    \"actid\": \"90255961\",\r\n    \"ClientType\": \"\",\r\n    \"SearchText\":\"\"//2551820.0785937952\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}Limits",
+              "host": [
+                "{{endpoint}}Limits"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TradeBook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\":\"9025561\",\r\n    \"ClientType\":\"\",\r\n    \"actid\":\"90255961\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}TradeBook",
+              "host": [
+                "{{endpoint}}TradeBook"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUserInfo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"actid\": \"28704838\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetUserInfo",
+              "host": [
+                "{{endpoint}}GetUserInfo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "MWList",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \r\n}"
+            },
+            "url": {
+              "raw": "{{endpoint}}MWList",
+              "host": [
+                "{{endpoint}}MWList"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetSecurityInfo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "UZ46qDsR758Wq6kicswZrVusKfUfcM2YD24lVRgpKojIeDrMvXb9OhjZz5M+Gxi7wz/WlzzmclvhZGYjdMHnwjwsyIpgJy4+FJtB1x+7Mig=",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"exch\": \"MCX\",\r\n    \"token\": \"472788\"\r\n    //\"IndicesKey\":\"IND_S&P_BSE_SENSEX\",\r\n    //\"Type\":\"\"\r\n}\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{liveendpoint}}GetSecurityInfo",
+              "host": [
+                "{{liveendpoint}}GetSecurityInfo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AlterTOTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"uid\":\"99658122\",\"IsTOTPDisable\":true}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}AlterTOTP",
+              "host": [
+                "{{endpoint}}AlterTOTP"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetLastOrderStatus",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"uid\":\"93223272\",\r\n  \"actid\":\"93223272\"\r\n} ",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetLastOrderStatus",
+              "host": [
+                "{{endpoint}}GetLastOrderStatus"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetLastAMOOrderStatus",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"uid\":\"99658122\",\r\n  \"actid\":\"99658122\"\r\n}"
+            },
+            "url": {
+              "raw": "{{endpoint}}GetLastAMOOrderStatus",
+              "host": [
+                "{{endpoint}}GetLastAMOOrderStatus"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ProductConversion",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\": \"75885422\",\r\n    \"login_token\": \"UQUHixrgPBGHp8L6aYENVLNTZZ0vTiRjEpK7ecBIk1u0JP9FIyPRBaHLHD597MB6O5jcB4xxZmbD67tZ+BXcH8bjZK6xzLgHZ1dru8lfs7U=\",\r\n    \"actid\": \"75885422\",\r\n    \"UserId\": \"75885422\",\r\n    \"usrID\": \"75885422\",\r\n    \"end_type\": \"ProductConversion\",\r\n    \"exch\": \"NFO\",\r\n    \"trantype\": \"Buy\",\r\n    \"segment\": \"Derivative\",\r\n    \"series\": \"EQ\",\r\n    \"tsym\": \"NIFTY2620325500CE\",\r\n    \"qty\": \"72\",\r\n    \"prc\": \"0\",\r\n    \"prd\": \"CNC\",\r\n    \"remarks\": \"Product conversion\",\r\n    \"prevprd\": \"MIS\",\r\n    \"postype\": \"Day\",\r\n    \"token\": \"49808\",\r\n    \"ordersource\": \"ios\",\r\n    \"ext_remarks\": \"External remarks\",\r\n    \"deviceid\": \"C273143B-4D07-4E20-9A3B-70AB7A2C61DA\",\r\n    \"device_type\": \"2\",\r\n    \"IP_ADDRESS\": \"106.210.165.8\",\r\n    \"device\": \"ios\",\r\n    \"BOW_API_VERSION\": \"1.0.4\",\r\n    \"pna\": \"com.navia.all\",\r\n    \"App_Version\": \"5.5\",\r\n    \"app_type\": \"\",\r\n    \"norenordno\": \"0\",\r\n    \"trgprc\": \"0\",\r\n    \"dscqty\": \"0\",\r\n    \"prctyp\": \"Limit\",\r\n    \"mkt_protection\": \"5%\",\r\n    \"ret\": \"Type X\",\r\n    \"bpprc\": \"0\",\r\n    \"blprc\": \"0\",\r\n    \"trailprc\": \"0\",\r\n    \"cl_ord_id\": \"123\",\r\n    \"amo\": \"Yes\",\r\n    \"tsym2\": \"\",\r\n    \"trantype2\": \"\",\r\n    \"qty2\": \"0\",\r\n    \"prc2\": \"0\",\r\n    \"tsym3\": \"0\",\r\n    \"trantype3\": \"\",\r\n    \"qty3\": \"0\",\r\n    \"prc3\": \"0\",\r\n    \"algo_id\": \"0\",\r\n    \"naic_code\": \"0\",\r\n    \"snonum\": \"0\",\r\n    \"filshares\": \"0\",\r\n    \"fillshares2\": \"-11111111\",\r\n    \"rorgqty\": \"0\",\r\n    \"orgtrgprc\": \"0\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}ProductConversion",
+              "host": [
+                "{{endpoint}}ProductConversion"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "MarketWatch",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "acPJoQQjBT8vQv39Jm9RZKqe19eizTo9jMrBxTO5PvI",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\":\"99658122\",\r\n    \"wlid\": [\r\n        \"33596\"\r\n    ]\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}MarketWatch",
+              "host": [
+                "{{endpoint}}MarketWatch"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetOrderMargin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "e30b499c-c6a1-4a2d-96c2-355208aaa691",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"deviceid\":\"AP3A.240617.008\",\"device_type\":\"1\",\"IP_ADDRESS\":\"106.205.213.26\",\"device\":\"Android\",\"BOW_API_VERSION\":\"1.0.4\",\"pna\":\"com.naviaall.app\",\"App_Version\":\"1.2.0\",\"app_type\":\"\",\"ucc\":\"91068101\",\"volume\":\"3\",\"price\":\"315.10\",\"tprice\":\"0.00\",\"dqty\":\"0\",\"ioc\":\"0\",\"login_token\":\"7+6mBNBbLRRn2BZquxJs7smSSwTSAX8u6NuwfIq2i5sLH86uyWC+my2kFjTfBm3mzzPJUZE9atxZYqZvFOpHnqPat2QqW4HkJpyCPiZG72U=\",\"user_id\":\"91068101\",\"user_name\":\"91068101\",\"current_price\":\"322.10\",\"blockdeal\":\"N\",\"pro_client\":\"1\",\"buy_sell\":\"1\",\"series\":\"EQ\",\"token\":\"467385\",\"nse_token\":\"467385\",\"bse_token\":\"0\",\"symbol\":\"NATURALGAS\",\"oe_destination\":\"5\",\"source\":\"MCX\",\"market\":\"Commodities\",\"order_type\":\"LIMIT\",\"amo_order\":\"false\",\"oe_market_id\":\"3\",\"oe_good_till_date\":\"0\",\"oe_good_till_cancel\":\"0\",\"oe_segment\":\"NA\",\"oe_book_type\":\"NA\",\"oe_group\":\"NA\",\"OEFIELD3\":\"Y\",\"OEField1\":\"1\",\"OESettlor\":\"\",\"oe_status\":\"2\",\"OEInstrumentType\":\"FUTCOM\",\"OEExpiryDate\":\"1771977599 \",\"OEOptionType\":\"XX\",\"OEStrikePrice\":\"-1\",\"OEAdminUSID\":\"91068101\",\"err_msg\":\" \",\"underlyingVal\":\"\",\"actid\":\"91068101\",\"UserId\":\"91068101\",\"usrID\":\"91068101\",\"end_type\":\"PlaceOrder\",\"uid\":\"91068101\",\"exch\":\"MCX\",\"trantype\":\"Buy\",\"norenordno\":\"0\",\"segment\":\"Commodities\",\"tsym\":\"NATGASMINI20FEB2026315PE\",\"qty\":\"1\",\"prc\":\"266\",\"trgprc\":\"0.00\",\"dscqty\":\"0\",\"prd\":\"CNC\",\"prctyp\":\"LMT\",\"mkt_protection\":\"\",\"ret\":\"DAY\",\"remarks\":\"New Order\",\"ordersource\":\"Android\",\"bpprc\":\"0\",\"blprc\":\"0\",\"trailprc\":\"0\",\"ext_remarks\":\"External remarks\",\"amo\":\"No\",\"tsym2\":\"\",\"trantype2\":\"\",\"qty2\":\"0\",\"prc2\":\"0\",\"tsym3\":\"0\",\"trantype3\":\"\",\"qty3\":\"0\",\"prc3\":\"0\",\"algo_id\":\"0\",\"naic_code\":\"0\",\"snonum\":\"0\",\"filshares\":\"0\",\"rorgqty\":\"0\",\"orgtrgprc\":\"0\",\"cl_ord_id\":\"123\",\"IsSquareOff\":false}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetOrderMargin",
+              "host": [
+                "{{endpoint}}GetOrderMargin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetBasketMargin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"AllOrders\": [\r\n        {\r\n            \"uid\": \"99658122\",\r\n            \"actid\": \"99658122\",\r\n            \"exch\": \"MCX\",\r\n            \"tsym\": \"GOLDM05AUG2025FUT\",\r\n            \"qty\": \"2\",\r\n            \"trantype\": \"Sell\",\r\n            \"ordno\": \"0\",\r\n            \"prc\": 97090,\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": \"0\",\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"ordersource\": \"Web\",\r\n            \"blprc\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"snonum\": \"0\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetBasketMargin",
+              "host": [
+                "{{endpoint}}GetBasketMargin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteMultiMWScrips",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{token}}DeleteMultiMWScrips",
+              "host": [
+                "{{token}}DeleteMultiMWScrips"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SkipTOTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{token}}SkipTOTP",
+              "host": [
+                "{{token}}SkipTOTP"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SingleOrdHist",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{token}}SingleOrdHist",
+              "host": [
+                "{{token}}SingleOrdHist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetAllowedSymbols",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{endpoint}}GetAllowedSymbols",
+              "host": [
+                "{{endpoint}}GetAllowedSymbols"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ActivityOrderBook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{token}}ActivityOrderBook",
+              "host": [
+                "{{token}}ActivityOrderBook"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AMOOrderBook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{token}}AMOOrderBook",
+              "host": [
+                "{{token}}AMOOrderBook"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BasketOrderMargin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"AllOrders\": [\r\n        {\r\n            \"uid\": \"89191333\",\r\n            \"actid\": \"89191333\",\r\n            \"exch\": \"MCX\",\r\n            \"trantype\": \"Sell\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"CUR\",\r\n            \"tsym\": \"CRUDEOIL14JAN20266550CE\",\r\n            \"qty\": 1,\r\n            \"prc\": \"0.00\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 0,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"MKT\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"DAY\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"Web\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\"\r\n        },\r\n        {\r\n            \"uid\": \"89191333\",\r\n            \"actid\": \"89191333\",\r\n            \"exch\": \"MCX\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"CUR\",\r\n            \"tsym\": \"CRUDEOIL14JAN20266600CE\",\r\n            \"qty\": 1,\r\n            \"prc\": \"0.00\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 0,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"MKT\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"DAY\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"Web\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}BasketOrderMargin",
+              "host": [
+                "{{endpoint}}BasketOrderMargin"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "FreezeAccount",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{token}}FreezeAccount",
+              "host": [
+                "{{token}}FreezeAccount"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "FundTransfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"DealerUCC\": \"11111122\",\r\n    \"ClientUCC\": \"11111122\",\r\n    \"FromExchange\": \"ALL\",\r\n    \"ToExchange\": \"ALL\",\r\n    \"FromSegment\": \"ALL\",\r\n    \"ToSegment\": \"ALL\",\r\n    \"ToProduct\": \"ALL\",\r\n    \"FromProduct\": \"MTF\",\r\n    \"Amount\": \"10\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}FundTransfer",
+              "host": [
+                "{{endpoint}}FundTransfer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreatePledgeHoldings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"DealerUCC\": \"NC000073\",\r\n    \"ClientUCC\": \"NC000073\",\r\n    \"SymbolData\": [\r\n        {\r\n            \"Quantity\": 4346,\r\n            \"SymbolName\": \"EBBETF0431-EQ\",\r\n            \"HoldingExchange\": \"NSE\",\r\n            \"Exchange\": \"ALL\",\r\n            \"Segment\": \"ALL\",\r\n            \"Product\": \"ALL\"\r\n        },\r\n        {\r\n            \"Quantity\": 2121,\r\n            \"SymbolName\": \"NIFTYBEES-EQ\",\r\n            \"HoldingExchange\": \"NSE\",\r\n            \"Exchange\": \"ALL\",\r\n            \"Segment\": \"ALL\",\r\n            \"Product\": \"ALL\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}CreatePledgeHoldings",
+              "host": [
+                "{{endpoint}}CreatePledgeHoldings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateUnpledgeHoldings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"DealerUCC\": \"99658122\",\r\n  \"ClientUCC\": \"99658122\",\r\n  \"SymbolData\": [\r\n    {\r\n      \"HoldingExchange\": \"NSE\",\r\n      \"SymbolName\": \"GOLDBEES-EQ\",\r\n      \"Quantity\": \"11\",\r\n      \"Exchange\": \"ALL\",\r\n      \"Segment\": \"ALL\",\r\n      \"Product\": \"MTF\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}CreateUnpledgeHoldings",
+              "host": [
+                "{{endpoint}}CreateUnpledgeHoldings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetPledgeLog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"uid\":\"ADMIN\",\r\n   \"type\":\"\",\r\n   \"actid\":\"PLEDGE\",\r\n   \"FromDate\":\"2025-07-01\",\r\n   \"ToDate\":\"2025-08-18\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetPledgeLog",
+              "host": [
+                "{{endpoint}}GetPledgeLog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetWithdrawalLog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "p5smmxrjSMGdvIJW8YUgv9uMKDKo3hXJ6URrKJLWAkV3ZGuHozyCoK3TXcpwFPlKKxVCJzfgFyTIgA9sm5GV8MmxazatbprrXvoMEK4Yr",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetWithdrawalLog",
+              "host": [
+                "{{endpoint}}GetWithdrawalLog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetUnplegedHoldingLog",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"uid\":\"99658122\",\r\n   \"actid\":\"99658122\",\r\n   \"Exchange\":\"ALL\",\r\n   \"Segment\":\"ALL\",\r\n   \"Product\":\"ALL\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetUnplegedHoldingLog",
+              "host": [
+                "{{endpoint}}GetUnplegedHoldingLog"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteUnpledgeRequest",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"\r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{token}}DeleteUnpledgeRequest",
+              "host": [
+                "{{token}}DeleteUnpledgeRequest"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DeleteUnpledgeHoldings",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"DealerUCC\":\"99658122\",\r\n   \"ClientUCC\":\"99658122\",\r\n    \"RequestId\":\"BA26CA73-EAEE-4335-B2AC-5B90CC5E6295\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}DeleteUnpledgeHoldings",
+              "host": [
+                "{{endpoint}}DeleteUnpledgeHoldings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreateNewSession",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "INSTAOPTIONS",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "e30b499c-c6a1-4a2d-96c2-355208aaa691",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"uid\": \"99658122\",\r\n    \"pwd\": \"99658122@123\"\r\n    \r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}CreateNewSession",
+              "host": [
+                "{{endpoint}}CreateNewSession"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ValidateNewSession",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "iuxg85Tx+zGgwxh9LktWUJmTMB6QJqNC/Z/WVtu9S7YpgsABSDOsFWec8yBDRqUtTCSd44NqNrKTv+c6l0ogFbMHGtJtpYgVY9BoeU4qkD1p3ELk3jDDkew0AvbGFDT98L0hzUBHhwqwpet7dH7OFDk2HEZYwtPWLlovMyyDWQk=",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "DEFAULT",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "INSTAOPTIONS",
+                "type": "default"
+              },
+              {
+                "key": "APIKey",
+                "value": "e30b499c-c6a1-4a2d-96c2-355208aaa691",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \r\n}\r\n"
+            },
+            "url": {
+              "raw": "{{endpoint}}ValidateNewSession",
+              "host": [
+                "{{endpoint}}ValidateNewSession"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ReorderMarketwatch",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"MarkeWatchId\": 26679,\r\n    \"ReOrders\": [\r\n        {\r\n            \"ReorderId\": 21,\r\n            \"SymbolName\": \"IND_NIFTY_MEDIA\" \r\n        },\r\n        {\r\n            \"ReorderId\": 20,\r\n            \"SymbolName\": \"IND_NIFTY_FIN_SERVICE\"\r\n        },\r\n        {\r\n            \"ReorderId\": 3,\r\n            \"SymbolName\": \"IND_NIFTY_BANK\"\r\n        },\r\n        {\r\n            \"ReorderId\": 4,\r\n            \"SymbolName\": \"IND_S&P_BSE_SENSEX\"\r\n        },\r\n        {\r\n            \"ReorderId\": 5,\r\n            \"SymbolName\": \"KANDARP-NT\"\r\n        },\r\n        {\r\n            \"ReorderId\": 6,\r\n            \"SymbolName\": \"IND_MCXSILVDEX\"\r\n        },\r\n        {\r\n            \"ReorderId\": 7,\r\n            \"SymbolName\": \"IND_GUAREXFAR\"\r\n        },\r\n        {\r\n            \"ReorderId\": 8,\r\n            \"SymbolName\": \"IND_S&P_BSE_BSEEVI\"\r\n        },\r\n        {\r\n            \"ReorderId\": 9,\r\n            \"SymbolName\": \"RELIANCE-EQ\"\r\n        },\r\n        {\r\n            \"ReorderId\": 18,\r\n            \"SymbolName\": \"SBIN-EQ\"\r\n        },\r\n        {\r\n            \"ReorderId\": 11,\r\n            \"SymbolName\": \"GOLDBEES-E\"\r\n        },\r\n        {\r\n            \"ReorderId\": 12,\r\n            \"SymbolName\": \"IND_NIFTY_50\"\r\n        },\r\n        {\r\n            \"ReorderId\": 13,\r\n            \"SymbolName\": \"NIFTYBEES-EQ\"\r\n        },\r\n        {\r\n            \"ReorderId\": 14,\r\n            \"SymbolName\": \"AXISBANK-A\"\r\n        },\r\n        {\r\n            \"ReorderId\": 15,\r\n            \"SymbolName\": \"AXISBANK-EQ\"\r\n        },\r\n        {\r\n            \"ReorderId\": 16,\r\n            \"SymbolName\": \"SENSEXETF-EQ\"\r\n        },\r\n        {\r\n            \"ReorderId\": 17,\r\n            \"SymbolName\": \"SENSEXADD-EQ\"\r\n        },\r\n        {\r\n            \"ReorderId\": 18,\r\n            \"SymbolName\": \"SENSEXIETF-EQ\"\r\n        },\r\n        {\r\n            \"ReorderId\": 19,\r\n            \"SymbolName\": \"SENSEXIETF-A\"\r\n        },\r\n        {\r\n            \"ReorderId\": 2,\r\n            \"SymbolName\": \"SENSEXBEES-A\"\r\n        },\r\n        {\r\n            \"ReorderId\": 1,\r\n            \"SymbolName\": \"SENSEX1-A\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}ReorderMarketwatch",
+              "host": [
+                "{{endpoint}}ReorderMarketwatch"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CalculateBasketMarginNoHedge",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"AllOrders\": [\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"NSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"GOLDBEES-EQ\",\r\n            \"qty\": 6,\r\n            \"prc\": 0,\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 6,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"MKT\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"MARKET\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 2\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"NSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"NIFTYBEES-EQ\",\r\n            \"qty\": 3,\r\n            \"prc\": 0,\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 3,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"MKT\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"MARKET\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 2\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"NSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"ICICINXT50-EQ\",\r\n            \"qty\": 5,\r\n            \"prc\": 0,\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 5,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"MKT\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"MARKET\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 2\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localendpoint}}CalculateBasketMarginNoHedge",
+              "host": [
+                "{{localendpoint}}CalculateBasketMarginNoHedge"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PlaceBasketOrderNoHedge",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"AllOrders\": [\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"POLYCHEM-X\",\r\n            \"qty\": 1,\r\n            \"prc\": \"0\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"MKT\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"MARKET\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"HDFCBANK-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"943.80\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"POLSON-X\",\r\n            \"qty\": 1,\r\n            \"prc\": \"12100\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"ELECTCAST-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"98.35\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"TATAPOWER-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"384.05\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"TATASTEEL-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"169.25\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"AXISBANK-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"1053.4\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"VBL-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"475.4\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"GOLDENTOBC-Z\",\r\n            \"qty\": 1,\r\n            \"prc\": \"36.34\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"NIFTYBEES-B\",\r\n            \"qty\": 1,\r\n            \"prc\": \"280.62\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"BAJAJELEC-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"568.35\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"BAJAJHLDNG-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"12940\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"ADANIENT-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"2314.1\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"ADANIPORTS-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"1382.05\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"SBIN-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"807.55\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"PNB-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"104.25\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"INFY-A\",\r\n            \"qty\": 1,\r\n            \"prc\": \"1501.25\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"GOLDBEES-E\",\r\n            \"qty\": 1,\r\n            \"prc\": \"91.25\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"BSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"JASCH-X\",\r\n            \"qty\": 1,\r\n            \"prc\": \"183\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 1\r\n        },\r\n        {\r\n            \"uid\": \"28704838\",\r\n            \"actid\": \"28704838\",\r\n            \"exch\": \"NSE\",\r\n            \"trantype\": \"Buy\",\r\n            \"norenordno\": \"0\",\r\n            \"segment\": \"EQ\",\r\n            \"tsym\": \"SMARTWORKS-EQ\",\r\n            \"qty\": 1,\r\n            \"prc\": \"520.55\",\r\n            \"trgprc\": \"0\",\r\n            \"dscqty\": 1,\r\n            \"prd\": \"CNC\",\r\n            \"prctyp\": \"Limit\",\r\n            \"mkt_protection\": \"\",\r\n            \"ret\": \"\",\r\n            \"remarks\": \"\",\r\n            \"ordersource\": \"WEB\",\r\n            \"bpprc\": \"0\",\r\n            \"blprc\": \"0\",\r\n            \"trailprc\": \"0\",\r\n            \"ext_remarks\": \"External remarks\",\r\n            \"cl_ord_id\": \"\",\r\n            \"tsym2\": \"\",\r\n            \"trantype2\": \"\",\r\n            \"qty2\": \"0\",\r\n            \"prc2\": \"0\",\r\n            \"tsym3\": \"0\",\r\n            \"trantype3\": \"\",\r\n            \"qty3\": \"0\",\r\n            \"prc3\": \"0\",\r\n            \"algo_id\": \"0\",\r\n            \"naic_code\": \"0\",\r\n            \"snonum\": \"0\",\r\n            \"filshares\": \"0\",\r\n            \"rorgqty\": \"0\",\r\n            \"orgtrgprc\": \"0\",\r\n            \"OEFIELD3\": \"Y\",\r\n            \"order_type\": \"LIMIT\",\r\n            \"oe_status\": 2,\r\n            \"oe_market_id\": 1,\r\n            \"oe_destination\": 2\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}PlaceBasketOrderNoHedge",
+              "host": [
+                "{{endpoint}}PlaceBasketOrderNoHedge"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AddUpdateBasketData",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"id\":0,\"ucc\":\"28704838\",\"name\":\"Mixed-1000\",\"brand\":\"rocket\",\"basket_type\":1,\"frequency\":\"weekly\",\"installment\":1,\"sip_day\":\"Monday\",\"sip_date\":\"1\",\"start_date\":\"2025-09-26\",\"end_date\":\"2025-09-29\",\"sip_dates\":\"[2025-09-29]\",\"default_basket_id\":1,\"admin_basket\":1}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{localendpoint}}AddUpdateBasketData",
+              "host": [
+                "{{localendpoint}}AddUpdateBasketData"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetBasketData",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "RMS",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"ucc\":\"28704838\"//NP000288\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetBasketData",
+              "host": [
+                "{{endpoint}}GetBasketData"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetMultiSecurityInfo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "AuthToken",
+                "value": "{{token}}",
+                "type": "default"
+              },
+              {
+                "key": "Module",
+                "value": "OrderService",
+                "type": "default"
+              },
+              {
+                "key": "Source",
+                "value": "WEB",
+                "type": "default"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"MultiSymbols\":[\"IND_NIFTY_50\"]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{endpoint}}GetMultiSecurityInfo",
+              "host": [
+                "{{endpoint}}GetMultiSecurityInfo"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

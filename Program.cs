@@ -7,7 +7,7 @@ namespace NTTApiTesting
 
     class Program
     {
-        static async Task Main(string[] args)
+       public  static async Task Main2(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
@@ -35,15 +35,16 @@ namespace NTTApiTesting
                 //}
 
                 var configService = new TestConfigurationService();
-                var testCases = configService.GetTestCases();
+                var testCases = configService.GetLoginTestCase();
 
                 Console.WriteLine($"\n Loaded {testCases.Count} test cases from configuration\n");
-
+ 
+                
                 Console.WriteLine("Available Tests:");
                 Console.WriteLine(new string('-', 70));
-                for (int i = 0; i < testCases.Count; i++)
+                for (int i = 1; i < testCases.Count; i++)
                 {
-                    var hasExtraction = testCases[i].ExtractToken != null ? " 🔑" : "";
+                    var hasExtraction = testCases[i].ExtractToken != null ? "key" : "";
                     Console.WriteLine($"  {i + 1}. {testCases[i].Name} [{testCases[i].Method}]{hasExtraction}");
                 }
                 Console.WriteLine(new string('-', 70));
@@ -64,7 +65,34 @@ namespace NTTApiTesting
                 var reportGenerator = new ReportGenerator();
                 var results = new List<TestResult>();
 
-                for (int i = 0; i < testsToRun.Count; i++)
+                var otpCase = testCases.First();
+                Console.WriteLine("\nSending OTP request...");
+                var otpResult = await apiTestService.ExecuteTestAsync(otpCase);
+
+                if (!otpResult.IsPassed)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Failed to send OTP. Stopping execution.");
+                    Console.ResetColor();
+                    return;
+                }
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nOTP sent successfully to registered mobile.");
+                Console.ResetColor();
+
+                Console.Write("Enter OTP: ");
+                string otp = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(otp))
+                {
+                    Console.WriteLine("OTP cannot be empty. Exiting.");
+                    return;
+                }
+
+                variableManager.SetVariable("{{otp}}", otp);
+
+                for (int i = 1; i < testsToRun.Count; i++)
                 {
                     var testCase = testsToRun[i];
 

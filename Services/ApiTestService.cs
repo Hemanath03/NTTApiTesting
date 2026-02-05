@@ -81,11 +81,17 @@ namespace NTTApiTesting.Services
 
                 // Execute request
                 var response = await _httpClient.SendAsync(request);
+
                 stopwatch.Stop();
 
                 testResult.StatusCode = (int)response.StatusCode;
                 testResult.ResponseTimeMs = stopwatch.ElapsedMilliseconds;
                 testResult.ResponseBody = await response.Content.ReadAsStringAsync();
+                Log.Information("RESPONSE | {TestName} | {StatusCode} | {Body}",
+                   testResult.TestName,
+                   testResult.StatusCode,
+                   testResult.ResponseBody);
+ 
 
                 // Extract token/variables from response if configured
                 if (testCase.ExtractToken != null && !string.IsNullOrEmpty(testCase.ExtractToken.JsonPath))
