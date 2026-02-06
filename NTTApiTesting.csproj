@@ -8,6 +8,224 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TestData\ActivityOrderBook.json" />
+    <None Remove="TestData\AddMarketWatchName.json" />
+    <None Remove="TestData\AddMarketWatchSymbols.json" />
+    <None Remove="TestData\AddUpdateBasketData.json" />
+    <None Remove="TestData\AlterTOTP.json" />
+    <None Remove="TestData\AMOOrderBook.json" />
+    <None Remove="TestData\BasketOrder.json" />
+    <None Remove="TestData\BasketOrderMargin.json" />
+    <None Remove="TestData\CalculateBasketMarginNoHedge.json" />
+    <None Remove="TestData\CancelOrder.json" />
+    <None Remove="TestData\CheckLogin.json" />
+    <None Remove="TestData\CreateNewSession.json" />
+    <None Remove="TestData\CreatePledgeHoldings.json" />
+    <None Remove="TestData\CreateUnpledgeHoldings.json" />
+    <None Remove="TestData\DeleteMultiMWScrips.json" />
+    <None Remove="TestData\DeleteUnpledgeHoldings.json" />
+    <None Remove="TestData\DeleteUnpledgeRequest.json" />
+    <None Remove="TestData\DelMarketWatchName.json" />
+    <None Remove="TestData\FgtPwdOTP.json" />
+    <None Remove="TestData\FreezeAccount.json" />
+    <None Remove="TestData\FundTransfer.json" />
+    <None Remove="TestData\GetAllowedSymbols.json" />
+    <None Remove="TestData\GetBasketData.json" />
+    <None Remove="TestData\GetBasketMargin.json" />
+    <None Remove="TestData\GetClientBankInfo.json" />
+    <None Remove="TestData\GetLastAMOOrderStatus.json" />
+    <None Remove="TestData\GetLastOrderStatus.json" />
+    <None Remove="TestData\GetMultiSecurityInfo.json" />
+    <None Remove="TestData\GetOrderMargin.json" />
+    <None Remove="TestData\GetPledgeLog.json" />
+    <None Remove="TestData\GetSecurityInfo.json" />
+    <None Remove="TestData\GetUnplegedHoldingLog.json" />
+    <None Remove="TestData\GetUsedMargin.json" />
+    <None Remove="TestData\GetUserInfo.json" />
+    <None Remove="TestData\GetWithdrawalLog.json" />
+    <None Remove="TestData\Holdings.json" />
+    <None Remove="TestData\Limits.json" />
+    <None Remove="TestData\Login.json" />
+    <None Remove="TestData\Logout.json" />
+    <None Remove="TestData\MarketWatch.json" />
+    <None Remove="TestData\ModifyOrder.json" />
+    <None Remove="TestData\MWList.json" />
+    <None Remove="TestData\OrderBook.json" />
+    <None Remove="TestData\PlaceBasketOrderNoHedge.json" />
+    <None Remove="TestData\PlaceOrder.json" />
+    <None Remove="TestData\PositionBook.json" />
+    <None Remove="TestData\ProductConversion.json" />
+    <None Remove="TestData\ReorderMarketwatch.json" />
+    <None Remove="TestData\SingleOrdHist.json" />
+    <None Remove="TestData\SkipTOTP.json" />
+    <None Remove="TestData\TradeBook.json" />
+    <None Remove="TestData\ValidateNewSession.json" />
+    <None Remove="TestData\ValOTPStPwd.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TestData\ActivityOrderBook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\AddMarketWatchName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\AddMarketWatchSymbols.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\AddUpdateBasketData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\AlterTOTP.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\AMOOrderBook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\BasketOrder.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\BasketOrderMargin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\CalculateBasketMarginNoHedge.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\CancelOrder.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\CheckLogin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\CreateNewSession.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\CreatePledgeHoldings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\CreateUnpledgeHoldings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\DeleteMultiMWScrips.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\DeleteUnpledgeHoldings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\DeleteUnpledgeRequest.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\DelMarketWatchName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\FgtPwdOTP.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\FreezeAccount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\FundTransfer.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetAllowedSymbols.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetBasketData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetBasketMargin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetClientBankInfo.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetLastAMOOrderStatus.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetLastOrderStatus.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetMultiSecurityInfo.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetOrderMargin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetPledgeLog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetSecurityInfo.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetUnplegedHoldingLog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetUsedMargin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetUserInfo.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\GetWithdrawalLog.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\Holdings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\Limits.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\Login.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\Logout.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\MarketWatch.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\ModifyOrder.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\MWList.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\OrderBook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\PlaceBasketOrderNoHedge.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\PlaceOrder.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\PositionBook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\ProductConversion.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\ReorderMarketwatch.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\SingleOrdHist.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\SkipTOTP.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\TradeBook.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\ValidateNewSession.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\ValOTPStPwd.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="Serilog" Version="4.3.0" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />

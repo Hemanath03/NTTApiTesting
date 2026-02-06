@@ -1,0 +1,89 @@
+{
+  "MarkeWatchId": 26679,
+  "ReOrders": [
+    {
+      "ReorderId": 21,
+      "SymbolName": "IND_NIFTY_MEDIA"
+    },
+    {
+      "ReorderId": 20,
+      "SymbolName": "IND_NIFTY_FIN_SERVICE"
+    },
+    {
+      "ReorderId": 3,
+      "SymbolName": "IND_NIFTY_BANK"
+    },
+    {
+      "ReorderId": 4,
+      "SymbolName": "IND_S&P_BSE_SENSEX"
+    },
+    {
+      "ReorderId": 5,
+      "SymbolName": "KANDARP-NT"
+    },
+    {
+      "ReorderId": 6,
+      "SymbolName": "IND_MCXSILVDEX"
+    },
+    {
+      "ReorderId": 7,
+      "SymbolName": "IND_GUAREXFAR"
+    },
+    {
+      "ReorderId": 8,
+      "SymbolName": "IND_S&P_BSE_BSEEVI"
+    },
+    {
+      "ReorderId": 9,
+      "SymbolName": "RELIANCE-EQ"
+    },
+    {
+      "ReorderId": 18,
+      "SymbolName": "SBIN-EQ"
+    },
+    {
+      "ReorderId": 11,
+      "SymbolName": "GOLDBEES-E"
+    },
+    {
+      "ReorderId": 12,
+      "SymbolName": "IND_NIFTY_50"
+    },
+    {
+      "ReorderId": 13,
+      "SymbolName": "NIFTYBEES-EQ"
+    },
+    {
+      "ReorderId": 14,
+      "SymbolName": "AXISBANK-A"
+    },
+    {
+      "ReorderId": 15,
+      "SymbolName": "AXISBANK-EQ"
+    },
+    {
+      "ReorderId": 16,
+      "SymbolName": "SENSEXETF-EQ"
+    },
+    {
+      "ReorderId": 17,
+      "SymbolName": "SENSEXADD-EQ"
+    },
+    {
+      "ReorderId": 18,
+      "SymbolName": "SENSEXIETF-EQ"
+    },
+    {
+      "ReorderId": 19,
+      "SymbolName": "SENSEXIETF-A"
+    },
+    {
+      "ReorderId": 2,
+      "SymbolName": "SENSEXBEES-A"
+    },
+    {
+      "ReorderId": 1,
+      "SymbolName": "SENSEX1-A"
+    }
+  ]
+}

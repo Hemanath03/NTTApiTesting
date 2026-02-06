@@ -1,0 +1,14 @@
+{
+  "DealerUCC": "99658122",
+  "ClientUCC": "99658122",
+  "SymbolData": [
+    {
+      "HoldingExchange": "NSE",
+      "SymbolName": "GOLDBEES-EQ",
+      "Quantity": "11",
+      "Exchange": "ALL",
+      "Segment": "ALL",
+      "Product": "MTF"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "DealerUCC": "47054457",
+  "ClientUCC": "90255961",
+  "FromExchange": "ALL",
+  "ToExchange": "ALL",
+  "FromSegment": "ALL",
+  "ToSegment": "ALL",
+  "ToProduct": "ALL",
+  "FromProduct": "MTF",
+  "Amount": "10"
+}
