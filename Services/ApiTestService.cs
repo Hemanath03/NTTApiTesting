@@ -87,7 +87,16 @@ namespace NTTApiTesting.Services
                 testResult.ResponseTimeMs = stopwatch.ElapsedMilliseconds;
                 testResult.ResponseBody = await response.Content.ReadAsStringAsync();
 
-                try
+                //Log.Information("RESPONSE | {TestName} | {StatusCode} | {Body}",
+                //   testResult.TestName,
+                //   testResult.StatusCode,
+                //   testResult.ResponseBody);
+
+                //Log.Information("Response Body for {TestName}: {ResponseBody}",//for log reponse body
+                //    testResult.TestName,
+                //    testResult.ResponseBody);
+
+                /*try
                 {
                     var json = System.Text.Json.JsonSerializer.Serialize(
                         System.Text.Json.JsonDocument.Parse(testResult.ResponseBody),
@@ -105,7 +114,7 @@ namespace NTTApiTesting.Services
                         testResult.TestName,
                         testResult.StatusCode,
                         testResult.ResponseBody);
-                }
+                }*/
 
 
                 // Extract token/variables from response if configured
