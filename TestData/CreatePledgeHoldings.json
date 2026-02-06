@@ -1,0 +1,22 @@
+{
+  "DealerUCC": "NC000073",
+  "ClientUCC": "NC000073",
+  "SymbolData": [
+    {
+      "Quantity": 4346,
+      "SymbolName": "EBBETF0431-EQ",
+      "HoldingExchange": "NSE",
+      "Exchange": "ALL",
+      "Segment": "ALL",
+      "Product": "ALL"
+    },
+    {
+      "Quantity": 2121,
+      "SymbolName": "NIFTYBEES-EQ",
+      "HoldingExchange": "NSE",
+      "Exchange": "ALL",
+      "Segment": "ALL",
+      "Product": "ALL"
+    }
+  ]
+}
