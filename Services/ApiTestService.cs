@@ -96,7 +96,7 @@ namespace NTTApiTesting.Services
                 //    testResult.TestName,
                 //    testResult.ResponseBody);
 
-                try
+                /*try
                 {
                     var json = System.Text.Json.JsonSerializer.Serialize(
                         System.Text.Json.JsonDocument.Parse(testResult.ResponseBody),
@@ -114,7 +114,7 @@ namespace NTTApiTesting.Services
                         testResult.TestName,
                         testResult.StatusCode,
                         testResult.ResponseBody);
-                }
+                }*/
 
 
                 // Extract token/variables from response if configured

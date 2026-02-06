@@ -22,8 +22,8 @@ namespace NTTApiTesting.Services
         {
             // Add default variables here
             _variables["{{endpoint}}"] = "https://navia-uat.navia.co.in:9003/?Activity=";
-            _variables["{{liveendpoint}}"] = "https://navia-uat.navia.co.in:9003/?Activity=";
-            _variables["{{localendpoint}}"] = "https://navia-uat.navia.co.in:9003/?Activity=";
+            //_variables["{{liveendpoint}}"] = "https://navia-uat.navia.co.in:9003/?Activity=";
+            //_variables["{{localendpoint}}"] = "https://navia-uat.navia.co.in:9003/?Activity=";
         }
 
         // Replace variables in text
