@@ -25,8 +25,7 @@ namespace NTTApiTesting.Services
             _variables["{{liveendpoint}}"] = "https://navia-uat.navia.co.in:9003/?Activity=";
             _variables["{{localendpoint}}"] = "https://navia-uat.navia.co.in:9003/?Activity=";
         }
-
-        // Replace variables in text
+         
         public string ReplaceVariables(string text)
         {
             if (string.IsNullOrEmpty(text)) return text;
@@ -37,8 +36,7 @@ namespace NTTApiTesting.Services
             }
             return text;
         }
-
-        // Extract token/variable from JSON response
+         
         public bool ExtractFromResponse(string responseBody, string jsonPath, string variableName)
         {
             try
@@ -48,6 +46,7 @@ namespace NTTApiTesting.Services
 
                 var jsonResponse = JObject.Parse(responseBody);
                 var token = jsonResponse.SelectToken(jsonPath);
+
 
                 if (token != null)
                 {

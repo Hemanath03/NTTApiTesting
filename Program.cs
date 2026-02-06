@@ -22,35 +22,32 @@ namespace NTTApiTesting
             {
                 Console.Clear();
                 Console.WriteLine("API Tester");
-                
+
                 Console.WriteLine();
 
-                
+
                 var variableManager = new VariableManager();
 
-               
-                
+
+
                 var configService = new TestConfigurationService();
                 var testCases = configService.GetTestCases();
-                var loginCases=configService.GetLoginTestCase();
+                var loginCases = configService.GetLoginTestCase();
 
                 var apiTestService = new ApiTestService(variableManager);
 
                 Console.WriteLine("\nSending OTP request...");
-                
 
-                foreach (var otpCase in loginCases)
+
+                var otpCase = loginCases.First();
+
+                var otpResult = await apiTestService.ExecuteTestAsync(otpCase);
+                if (!otpResult.IsOTPPassed)
                 {
-                    var otpResult = await apiTestService.ExecuteTestAsync(otpCase);
-
-
-                    if (!otpResult.IsPassed)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Failed to send OTP. Stopping execution.");
-                        Console.ResetColor();
-                        return;
-                    }
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Failed to send OTP. Stopping execution.");
+                    Console.ResetColor();
+                     return;
                 }
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -77,7 +74,7 @@ namespace NTTApiTesting
 
                 for (int i = 0; i < testCases.Count; i++)
                 {
-                                       
+
                     var hasExtraction = testCases[i].ExtractToken != null ? " " : "";
                     Console.WriteLine($"  {i + 1}. {testCases[i].Name} [{testCases[i].Method}]{hasExtraction}");
                 }
@@ -127,14 +124,14 @@ namespace NTTApiTesting
 
                 Console.WriteLine(new string('═', 100));
 
-                
+
                 Console.Write("\n Show extracted variables? (y/n): ");
                 if (Console.ReadLine()?.ToLower() == "y")
                 {
                     variableManager.DisplayVariables();
                 }
 
-                
+
                 Console.WriteLine(" Generating reports...");
 
                 var reportFolder = "Reports";
@@ -148,7 +145,7 @@ namespace NTTApiTesting
                 reportGenerator.GenerateCsvReport(results, csvReportPath);
                 reportGenerator.GenerateConsoleReport(results);
 
-               
+
                 Console.WriteLine($" HTML Report saved: {Path.GetFullPath(htmlReportPath)}");
                 Console.WriteLine($" CSV Report saved:  {Path.GetFullPath(csvReportPath)}");
                 Console.ResetColor();

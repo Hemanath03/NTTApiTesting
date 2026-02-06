@@ -14,8 +14,12 @@ namespace NTTApiTesting.Models
         public Dictionary<string, string> Headers { get; set; }
         public string Body { get; set; }
         public int ExpectedStatusCode { get; set; } = 200;
+        public int PerformanceThresholdMs { get; set; } = 100;
+        public string SuccessStatusPath { get; set; } = "StatusCode";
+        public string SuccessStatusValue { get; set; } = "0";
 
-        
+
+
         public List<string> ExpectedResponseContains { get; set; }
         public Dictionary<string, string> ExpectedJsonFields { get; set; }
 

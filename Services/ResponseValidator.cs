@@ -15,15 +15,15 @@ namespace NTTApiTesting.Services
         {
             var errors = new List<string>();
             bool isValid = true;
+            result.IsOTPPassed = true;
 
-            // Validate Status Code
-            if (result.StatusCode != testCase.ExpectedStatusCode)
+
+            if (result.ResponseTimeMs > testCase.PerformanceThresholdMs)
             {
-                errors.Add($"Status code mismatch: Expected {testCase.ExpectedStatusCode}, Got {result.StatusCode}");
+                errors.Add($"Performance issue: Took {result.ResponseTimeMs}ms, Threshold {testCase.PerformanceThresholdMs}ms");
                 isValid = false;
             }
 
-            // Validate Response Contains
             if (testCase.ExpectedResponseContains != null && testCase.ExpectedResponseContains.Any())
             {
                 foreach (var expectedText in testCase.ExpectedResponseContains)
@@ -37,12 +37,21 @@ namespace NTTApiTesting.Services
                 }
             }
 
-            // Validate JSON Fields
-            if (testCase.ExpectedJsonFields != null && testCase.ExpectedJsonFields.Any())
+            if (result.ResponseBody != null)
             {
                 try
                 {
                     var jsonResponse = JObject.Parse(result.ResponseBody);
+
+                    var statusToken = jsonResponse.SelectToken(testCase.SuccessStatusPath)?.ToString();
+
+                    if (statusToken != testCase.SuccessStatusValue)
+                    {
+                        errors.Add($"Business status mismatch at {testCase.SuccessStatusPath}. Expected {testCase.SuccessStatusValue}, Got {statusToken}");
+                        result.IsOTPPassed = false;
+                        isValid = false;
+                    }
+
 
                     foreach (var expectedField in testCase.ExpectedJsonFields)
                     {

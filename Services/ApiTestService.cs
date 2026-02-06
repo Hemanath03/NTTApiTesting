@@ -1,4 +1,5 @@
 ﻿using NTTApiTesting.Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,8 +8,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection.PortableExecutable;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Serilog;
 
 namespace NTTApiTesting.Services
 {
@@ -33,9 +34,7 @@ namespace NTTApiTesting.Services
                 TestName = testCase.Name,
                 ExecutedAt = DateTime.Now,
                 Method = testCase.Method
-            };
-
-            var stopwatch = Stopwatch.StartNew();
+            };           
 
             try
             {
@@ -80,21 +79,13 @@ namespace NTTApiTesting.Services
                 }
 
                 // Execute request
+                var stopwatch = Stopwatch.StartNew();
                 var response = await _httpClient.SendAsync(request);
                 stopwatch.Stop();
 
                 testResult.StatusCode = (int)response.StatusCode;
                 testResult.ResponseTimeMs = stopwatch.ElapsedMilliseconds;
                 testResult.ResponseBody = await response.Content.ReadAsStringAsync();
-
-                //Log.Information("RESPONSE | {TestName} | {StatusCode} | {Body}",
-                //   testResult.TestName,
-                //   testResult.StatusCode,
-                //   testResult.ResponseBody);
-
-                //Log.Information("Response Body for {TestName}: {ResponseBody}",//for log reponse body
-                //    testResult.TestName,
-                //    testResult.ResponseBody);
 
                 try
                 {
@@ -129,7 +120,6 @@ namespace NTTApiTesting.Services
 
                 //Validate response
                 var validationResult = _validator.ValidateResponse(testCase, testResult);
-                testResult.StatusCodeValid = testResult.StatusCode == testCase.ExpectedStatusCode;
                 testResult.ResponseBodyValid = validationResult.isValid;
                 testResult.IsPassed = validationResult.isValid;
 
@@ -141,8 +131,8 @@ namespace NTTApiTesting.Services
             }
             catch (Exception ex)
             {
-                stopwatch.Stop();
-                testResult.ResponseTimeMs = stopwatch.ElapsedMilliseconds;
+                //stopwatch.Stop();
+                //testResult.ResponseTimeMs = stopwatch.ElapsedMilliseconds;
                 testResult.IsPassed = false;
                 testResult.ErrorMessage = ex.Message;
                 testResult.ValidationErrors = ex.Message;
